@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-12">
+            <form class = 'mb-3'>
+                {% csrf_token %}
+                <div class="form-row align-items-center">
+                  <div class="col-sm-3 my-1">
+                    <label class="sr-only" for="inlineFormInputName">Ara</label>
+                    <input type="text" name ='keyword' class="form-control" id="inlineFormInputName" placeholder="Ara">
+                  </div>
+                  <div class="col-auto my-1">
+                    <button type="submit" class="btn btn-primary">Ara</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
+    {% if articles %}
+    {% for article in articles  %}
+
+
+    <div class="row">
+        <div class="col-md-10 offset-md-3">
+            <div class="card mb-3" style="width: 36rem;">
+                {% if article.article_image %}
+                <img class="img-fluid rounded my-5 p-5" src="{{article.article_image.url}}" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{article.title}}</h5>
+                    <p class="card-text lead">{{article.content|safe|truncatewords:60}}</p>
+                    <p class="card-text lead">Yazar <small class="text-muted">{{article.author}}</small></p>
+                    <p class="card-text lead">Tarih <small class="text-muted">{{article.created_date}}</small></p>
+                    <a href="{% url 'article:detail' article.id %}" class="btn btn-primary">Devamini Oku</a>
+                </div>
+              </div>
+        </div>    
+    </div>
+
+
+
+    {% endfor %}
+
+    {% else %}
+        <div class="alert alert-danger">
+            Makale Bulunamadi...
+        </div>
+    {% endif %}
+        
+        
+{% endblock body %}
+    
