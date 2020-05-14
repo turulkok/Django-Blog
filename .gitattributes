@@ -1,4 +1,9 @@
 static/js/* linguist-vendored
+static/css/* linguist-vendored
 staticfiles/js/* linguist-vendored
+staticfiles/css/* linguist-vendored
 staticfiles/admin/js/* linguist-vendored
-staticfiles/ckeditor/* linguist-vendored
+staticfiles/admin/css/* linguist-vendored
+staticfiles/ckeditor/js/* linguist-vendored
+templates/* linguist-vendored
+
